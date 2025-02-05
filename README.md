@@ -10,6 +10,8 @@ HawkEye is an advanced fraud detection model designed to identify fraudulent tra
 
 ## 📊 Benchmark Results
 
+**Note:** The model is currently in the development process, and its performance is expected to improve with further refinements and data enhancements.
+
 | Metric          | Value  |
 |----------------|--------|
 | **ROC AUC**    | 0.7729 |
@@ -42,6 +44,10 @@ $ cd HawkEye-Fraud-Detection
 $ pip install -r requirements.txt
 ```
 
+## 📡 Dataset
+The model is trained using the dataset available at:  
+🔗 [Fraudulent E-Commerce Transactions Dataset](https://www.kaggle.com/datasets/shriyashjagtap/fraudulent-e-commerce-transactions/data)
+
 ## 🚀 Training the Model
 To train the model using a dataset:
 ```bash
@@ -71,5 +77,5 @@ Feel free to fork this repo and submit pull requests with improvements!
 This project is licensed under the MIT License.
 
 ## 📩 Contact
-For any queries, reach out via GitHub Issues or email: **nihad.shukurlu11@gmail.com**
+For any queries, reach out via GitHub Issues or email: **your.email@example.com**
 
