@@ -48,20 +48,6 @@ $ pip install -r requirements.txt
 The model is trained using the dataset available at:  
 🔗 [Fraudulent E-Commerce Transactions Dataset](https://www.kaggle.com/datasets/shriyashjagtap/fraudulent-e-commerce-transactions/data)
 
-## 🚀 Training the Model
-To train the model using a dataset:
-```bash
-$ python src/train_model.py
-```
-This will process the dataset, train the model, and save it as `deepfraud_model.json`.
-
-## 📈 Evaluating the Model
-After training, evaluate the model's performance:
-```bash
-$ python src/evaluate_model.py
-```
-This script provides classification reports, confusion matrix, and an **ROC curve** visualization.
-
 ## 💾 Saving & Loading the Model
 The trained model is saved as `deepfraud_model.json`. To load the model for predictions:
 ```python
@@ -70,12 +56,5 @@ model = xgb.Booster()
 model.load_model("models/deepfraud_model.json")
 ```
 
-## 📌 Contributing
-Feel free to fork this repo and submit pull requests with improvements!
-
 ## 📜 License
 This project is licensed under the MIT License.
-
-## 📩 Contact
-For any queries, reach out via GitHub Issues or email: **nihad.shukurlu11@gmail.com**
-
