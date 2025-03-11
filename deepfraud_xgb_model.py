@@ -118,9 +118,8 @@ def preprocess(df):
 
 def train_model():
     DATA_PATH = "Fraudulent_E-Commerce_Transaction_Data.parquet"
-    print("📢 Loading data from Parquet using RAPIDS CuDF...")
     full_df = cudf.read_parquet(DATA_PATH)
-    print("✅ Data loaded into GPU memory.")
+    print("Data loaded into GPU memory.")
 
     if not np.issubdtype(full_df['Transaction Date'].dtype, np.datetime64):
         full_df['Transaction Date'] = cudf.to_datetime(full_df['Transaction Date'])
@@ -157,7 +156,7 @@ def train_model():
         'random_state': 42
     }
 
-    print("🚀 Training XGBoost model on GPU...")
+    print("Training XGBoost model on GPU...")
     model = xgb.train(
         params,
         dtrain,
@@ -166,7 +165,7 @@ def train_model():
         early_stopping_rounds=50
     )
 
-    print("📢 Calculating optimal threshold using F1 Score...")
+    print("Calculating optimal threshold using F1 Score...")
     y_proba = model.predict(dval)
     y_val_np = y_val.to_pandas().values
     precisions, recalls, thresholds = precision_recall_curve(y_val_np, y_proba)
@@ -174,7 +173,7 @@ def train_model():
     optimal_idx = np.argmax(f1_scores)
     optimal_threshold = thresholds[optimal_idx] if optimal_idx < len(thresholds) else 0.5
 
-    print(f"✅ Optimal threshold (F1): {optimal_threshold:.4f}")
+    print(f"Optimal threshold (F1): {optimal_threshold:.4f}")
 
     return model, optimal_threshold
 
@@ -227,17 +226,14 @@ def evaluate_model(model, threshold):
     recall = recall_score(y_test, predictions)
     conf_matrix = confusion_matrix(y_test, predictions)
 
-    print("\nOptimized Test Performance:")
-    print(classification_report(y_test, predictions))
-
-    print("\n📊\tPerformance Metrics:")
+    print("\nPerformance Metrics:")
     print(f"- ROC AUC: {roc_auc:.4f}")
     print(f"- Accuracy: {accuracy:.4f}")
     print(f"- F1 Score: {f1:.4f}")
     print(f"- Precision: {precision:.4f}")
     print(f"- Recall: {recall:.4f}")
 
-    print("\n🖥️\tConfusion Matrix:")
+    print("\nConfusion Matrix:")
     print(conf_matrix)
 
 
